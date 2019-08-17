@@ -1,33 +1,34 @@
-maze=[[1,0,0,0],
-    [1,1,0,0],
-    [0,1,0,0],
-    [1,1,1,1]]
-n=4  
+maze=[[1,2,3,4],
+    [5,6,7,8],
+    [9,10,11,12],
+    [13,14,15,16]]
+ 
 def printsol(sol):
+    path=[]
     for i in sol:
         for j in i:
-            print(str(j)+" ",end="")
-        print()
+            if j!=0:
+                path.append(j)
+    print(path)
 def issafe(maze,x,y):
-    if 0<=x<n and 0<=y<n:
+    if 0<=x<m and 0<=y<n:
         return True
     return False
 def solmaze(maze,x,y,sol):
-    if x==n-1 and y==n-1 :
-        sol[x][y]=1 
+    if x==m-1 and y==n-1 :
+        sol[x][y]=maze[x][y]
         return True
     if issafe(maze,x,y):
-        sol[x][y]=1 
+        sol[x][y]=maze[x][y]
         if solmaze(maze,x+1,y,sol):
             printsol(sol)
-            print()
         if solmaze(maze,x,y+1,sol):
             printsol(sol)
-            print()
         sol[x][y]=0
         
-def solution(maze,n):
+def solution(maze,m,n):
     sol=[[0 for j in range(4)]for i in range(4)]
     solmaze(maze,0,0,sol)
-    
-solution(maze,n)
+m=4 
+n=4
+solution(maze,m,n)
