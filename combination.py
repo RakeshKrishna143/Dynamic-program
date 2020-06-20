@@ -3,8 +3,7 @@ a=['h','t']
 
 def dfs(a,target,index,path,res):
     if len(path)==target:
-        res.append(path)
-        return 
+        return res.append(path)
     
     else:
         for i in range(index,len(a)):
